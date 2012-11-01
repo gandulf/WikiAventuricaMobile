@@ -123,11 +123,11 @@ window.app = function() {
 
 	function resourceLoaderURL( lang ) {
 		// Path to the ResourceLoader load.php to be used for loading site-specific css
-		return "http://bits.wikimedia.org/" + lang + ".wikipedia.org/load.php"
+		return "http://bits.wikimedia.org/" + lang + "."+PROJECTNAME+".de/load.php"
 	}
 
 	function baseUrlForLanguage(lang) {
-		return window.PROTOCOL + '://' + lang + '.' + PROJECTNAME + '.org';
+		return window.PROTOCOL + '://' + lang + '.' + PROJECTNAME + '.de';
 	}
 
 	function makeCanonicalUrl(lang, title) {
@@ -238,7 +238,7 @@ window.app = function() {
 		params = params || {};
 		params.format = 'json'; // Force JSON
 		lang = lang || preferencesDB.get('language');
-		var url = app.baseUrlForLanguage(lang) + '/w/api.php';
+		var url = app.baseUrlForLanguage(lang) + '/api.php';
 		var defaultOptions = {
 			url: url,
 			data: params,

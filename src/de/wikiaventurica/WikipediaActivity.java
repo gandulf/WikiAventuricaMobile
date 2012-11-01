@@ -1,4 +1,4 @@
-package org.wikipedia;
+package de.wikiaventurica;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;

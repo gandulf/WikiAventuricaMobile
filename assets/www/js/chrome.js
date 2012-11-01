@@ -366,7 +366,7 @@ window.chrome = function() {
 				href = $(target).attr('href'); // unexpanded, may be relative
 
 			event.preventDefault();
-			if (url.match(new RegExp("^https?://([^/]+)\." + PROJECTNAME + "\.org/wiki/"))) {
+			if (url.match(new RegExp("^https?://([^/]+)\." + PROJECTNAME + "\.de/wiki/"))) {
 				// ...and load it through our intermediate cache layer.
 				app.navigateToPage(url);
 			} else {

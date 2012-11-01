@@ -1,4 +1,4 @@
-package org.wikipedia;
+package de.wikiaventurica;
 
 import org.json.JSONArray;
 import org.json.JSONException;

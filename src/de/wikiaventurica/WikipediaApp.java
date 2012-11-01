@@ -1,4 +1,4 @@
-package org.wikipedia;
+package de.wikiaventurica;
 
 import java.io.File;
 

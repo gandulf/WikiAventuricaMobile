@@ -3,8 +3,8 @@ var currentHistoryIndex = -1;
 var pageHistory = [];
 
 window.SAVED_PAGES_VERSION = 1;
-window.PROTOCOL = 'https';
-window.PROJECTNAME = 'wikipedia';
+window.PROTOCOL = 'http';
+window.PROJECTNAME = 'wiki-aventurica';
 window.LICENSEPAGE = "Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License";
 
 (function() {

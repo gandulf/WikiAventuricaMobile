@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=100%; initial-scale=1; user-scalable=no" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<base /><!-- used to process relative links in content -->
-	<title>Wikipedia</title>
+	<title>Wiki-Aventurica</title>
 
   <script type="text/javascript">
     if (typeof window.console == "undefined") {
@@ -70,6 +70,7 @@
 	<link rel="stylesheet" href="MobileFrontend/stylesheets/modules/mf-toggle.css" />
 	<link rel="stylesheet" href="MobileFrontend/stylesheets/common/mf-hacks.css" />
 	<link rel="stylesheet" href="app.css" />
+	<link rel="stylesheet" href="aventurica.css" />
 
 </head>
 
@@ -77,6 +78,7 @@
 
 	<div id="templates">
 		<script type="text/html" id="settings-page-template">
+			<!--
 			<div class="item">
 				<label for="contentLanguageSelector"><msg key="settings-language-label"></msg></label>
 				<select id='contentLanguageSelector'>
@@ -85,7 +87,7 @@
 					{{/languages}}
 				</select>
 			</div>
-
+			-->
 			<div class="item">
 				<label for="themeSelector"><msg key="settings-theme-selector-label"></msg></label>
 				<select id="themeSelector">
@@ -107,7 +109,7 @@
 				<label><msg key="about-page-label"></msg></label>
 			</div>
 
-			<div id="contactPageLabel" class="item externallink" data-link="/w/index.php?title=Special:MobileFeedback&feedbacksource=WikipediaMobile%2F1.2">
+			<div id="contactPageLabel" class="item externallink" data-link="/wiki/Wiki_Aventurica:Kritik_und_Anregungen">
 				<label><msg key="contact-page-label"></msg></label>
 			</div>
 		</script>
@@ -240,7 +242,8 @@
 		<div class="scroller">
 			<div id="about-page-content">
 				<img src="image/logo.png" />
-				<p id="about-version"><msg key="about-version"></msg> <span id="about-version-string"></span></p>
+				<p id="about-version"><msg key="about-version"></msg> <span id="about-version-string"></span></p>				
+				<p id="about-wikiaventurica"><msg key="about-wikiaventurica"></msg></p>
 				<a id="about-wmf-logo" href="http://wikimediafoundation.org/"><img src="image/wmf.png" /></a>
 				<p id="about-copyright"><msg key="about-copyright"></msg></p>
 				<p id="about-contributors-header"><msg key="about-contributors"></msg></p>
@@ -336,8 +339,8 @@
 		<!-- Contains specific styles for the user's theme -->
 	</div>
 	<menu id="appMenu" type="context">
-		<command type="command" id="languageCmd" icon="optionLanguage.png" disabled action="read-in" />
-		<command type="command" id="nearbyCmd" icon="optionNearMe.png" action="near-me" />
+		<!-- command type="command" id="languageCmd" icon="optionLanguage.png" disabled action="read-in" / -->
+		<!-- command type="command" id="nearbyCmd" icon="optionNearMe.png" action="near-me" / -->
 		<command type="command" id="sharePageCmd" action="share-page" icon="optionSharePage.png" />
 		<command type="command" id="savePageCmd" icon="optionAddBookmark.png" action="save-page" />
 		<command type="command" id="savedPagesCmd" icon="optionReadLater.png" action="view-saved-pages" />

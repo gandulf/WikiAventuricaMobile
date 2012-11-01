@@ -682,6 +682,10 @@ body[dir=rtl] #go-forward span {
 	.goodscroll #content {
 		position: absolute;
 		width: auto;
+		/* BEGIN FIX - on wide devices the content would not always fill up the whole width, this fix ensures, this */
+		right:0px;
+		left:0px;
+		/* END FIX */
 	}
 	.goodscroll.overlay-open #content {
 		left: 320px;

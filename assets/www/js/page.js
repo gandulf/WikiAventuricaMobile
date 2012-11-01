@@ -172,14 +172,48 @@
 		var sectionTemplate = templates.getTemplate( 'section-template' );
 		console.log( 'fullpage is ' + this.isCompletePage );
 		if( this.isCompletePage ) {
-			d.resolve( sectionTemplate.render( this.getSection( id ) ) );
+			var section = this.getSection( id );
+			Page.trimSectionText(section);
+			Page.trimSubSections(section);			
+			d.resolve( sectionTemplate.render( section ) );
 		} else {
 			this.requestCompletePage().done( function( page ) {
-				d.resolve( sectionTemplate.render( page.getSection( id ) ) );
+				var section = page.getSection( id );
+				Page.trimSectionText(section);
+				Page.trimSubSections(section);				
+				d.resolve( sectionTemplate.render( section ) );
 			});
 		}
 		return d;
 	};
+	
+	Page.trimSectionText = function(section) {
+		if (section.text.indexOf(">"+section.line+"<") >=0) {
+			var end = section.text.indexOf("</h2>");
+			section.text = section.text.substring(end+5);
+		}
+		while (section.text.indexOf("\n")==0)
+			section.text = section.text.substring(1);
+	}
+	
+	Page.trimSubSections = function(section) {
+		if (section.subSections) {
+			for (i = 0; i< section.subSections.length; i++) {
+				Page.trimSubSectionText(section.subSections[i]);
+			}
+		}
+	}
+	
+	/* <h3> <span class=\"mw-headline\" id=\"Bewertung\">Bewertung</span>\n</h3> */
+	Page.trimSubSectionText = function(subsection) {
+		if (subsection.text.indexOf(">"+subsection.line+"<") >=0) {
+			var end = subsection.text.indexOf("</h3>");
+			subsection.text = subsection.text.substring(end+5);
+		}
+		while (subsection.text.indexOf("\n")==0)
+			subsection.text = subsection.text.substring(1);
+	}
+	
 
 	Page.prototype.toHtml = function() {
 		var contentTemplate = templates.getTemplate('content-template');
@@ -202,7 +236,7 @@
 	// Returns an API URL that makes a request that retreives this page
 	// Should mimic params from Page.requestFromTitle
 	Page.prototype.getAPIUrl = function() {
-		return app.baseUrlForLanguage(this.lang) + '/w/api.php?format=json&action=mobileview&page=' + encodeURIComponent(this.title) + '&redirects=1&prop=sections|text&sections=all&sectionprop=level|line&noheadings=true';
+		return app.baseUrlForLanguage(this.lang) + '/api.php?format=json&action=mobileview&page=' + encodeURIComponent(this.title) + '&redirects=1&prop=sections|text&sections=all&sectionprop=level|line&noheadings=true';
 	};
 
 	Page.prototype.getCanonicalUrl = function() {
