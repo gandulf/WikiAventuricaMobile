@@ -1,4 +1,6 @@
-# Wikipedia Mobile
+# Wiki Aventurica Mobile
+
+Wiki Aventurica Mobile is based on Wikipedia Mobile
 
 ## Getting started
 
