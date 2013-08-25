@@ -2,6 +2,11 @@
 
 // @todo migrate menu setup in here?
 
+// set Android 2.x to HTTP
+if(navigator.userAgent.match(/Android 2/g)) {
+	window.PROTOCOL = 'http';
+}
+//
 // @Override
 // navigator.lang always returns 'en' on Android
 // use the Globalization plugin to request the proper value
@@ -193,16 +198,6 @@ function updateMenuState() {
 									   });
 	return d;
 };
-
-//@Override
-app.setCaching = function(enabled, success) {
-	console.log('setting cache to ' + enabled);
-	if(enabled) {
-		window.CacheMode.setCacheMode('LOAD_CACHE_ELSE_NETWORK', success);
-	} else {
-		window.CacheMode.setCacheMode('LOAD_DEFAULT', success);
-	}
-}
 
 window.preferencesDB.addOnSet(function(id, value) {
 	window.preferences.set(id, value, function(){}, function(){});
