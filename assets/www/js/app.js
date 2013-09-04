@@ -118,11 +118,11 @@ window.app = function() {
 
 	function resourceLoaderURL( lang ) {
 		// Path to the ResourceLoader load.php to be used for loading site-specific css
-		return "http://bits.wikimedia.org/" + lang + "."+PROJECTNAME+".de/load.php"
+		return "http://bits.wikimedia.org/" + lang + "."+PROJECTNAME+"."+PROJECTREGION+"/load.php"
 	}
 
 	function baseUrlForLanguage(lang) {
-		return window.PROTOCOL + '://' + lang + '.' + PROJECTNAME + '.de';
+		return window.PROTOCOL + '://' + lang + '.' + PROJECTNAME + '.'+PROJECTREGION;
 	}
 
 	function makeCanonicalUrl(lang, title) {
@@ -225,20 +225,26 @@ window.app = function() {
 	function makeAPIRequest(params, lang, extraOptions) {
 		params = params || {};
 		params.format = 'json'; // Force JSON
+		
+		// DIRTY HACK since wiki-aventurica seems to have a problem with encoded pipes | as %7C .... ????
+		p = $.param(params, false);
+		p=p.replace(/%7C/g,"|");
+		
 		lang = lang || preferencesDB.get('language');
-		var url = app.baseUrlForLanguage(lang) + '/api.php';
+		var url = app.baseUrlForLanguage(lang) + API_PATH;
 		var defaultOptions = {
 			url: url,
-			data: params,
+			data: p,
 			// Making this 'text' and parsing the JSON ourselves makes things much easier
 			// Than making it as 'JSON' for pre-processing via dataFilter
 			// See https://forum.jquery.com/topic/datafilter-function-and-json-string-result-problems
 			dataType: 'text',
-			dataFilter: function(text) {
+			dataFilter: function(text) {				
 				return JSON.parse(text);
-			}
+			},		   
 		};
 		var options = $.extend(defaultOptions, extraOptions);
+				
 		return $.ajax(options);
 	}
 

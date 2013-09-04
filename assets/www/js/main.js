@@ -5,6 +5,9 @@ var pageHistory = [];
 window.SAVED_PAGES_VERSION = 1;
 window.PROTOCOL = 'http';
 window.PROJECTNAME = 'wiki-aventurica';
+window.PROJECTREGION = 'de';
+window.API_PATH='/api.php';
+
 window.LICENSEPAGE = "Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License";
 
 (function() {
